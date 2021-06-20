@@ -1,0 +1,21 @@
+create table if not exists users (
+id         serial unique primary key,
+vk_id      integer unique not null,
+first_name varchar(30),
+last_name  varchar(30),
+sex        integer not null,
+bdate      date not null,
+city_id    integer,
+country_id integer,
+relation   integer (1),
+token      varchar(100)
+);
+
+create table if not exists searches (
+id         serial  unique primary key,
+for_id     integer references users(vk_id),
+vk_id      integer not null,
+showed     boolean DEFAULT False,
+favorite   boolean DEFAULT False,
+black_list boolean DEFAULT False
+);
