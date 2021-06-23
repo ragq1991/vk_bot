@@ -1,0 +1,10 @@
+For main.py:
+vk_api
+time
+
+For DBForBot.py:
+psycopg2
+
+For VkMessenger.py:
+vk_api
+random

@@ -3,6 +3,8 @@ from DBForBot import DBForBot
 from vk_api.longpoll import VkEventType
 from Dicts_of_word import list_hello, list_yes, list_no
 from time import sleep
+import settings as stt
+
 
 def send(test_db, my_vk, user_id, user_data):
     my_vk.write_msg(user_id, 'Идет поиск...')
@@ -47,8 +49,8 @@ def no_access(my_vk, user_id):
 
 
 def main():
-    test_db = DBForBot(dbname, user, password, host)
-    my_vk = VkMessenger(token, login, password, id)
+    test_db = DBForBot(stt.db_name, stt.db_user, stt.db_pass, stt.db_host)
+    my_vk = VkMessenger(stt.vk_token, stt.vk_login, stt.vk_pass, stt.vk_idapp)
     for event in my_vk.longpoll.listen():
         if event.type == VkEventType.MESSAGE_NEW and event.to_me:
             if event.to_me:
@@ -90,4 +92,3 @@ if __name__ == "__main__":
             main()
         except:
             sleep(3)
-
